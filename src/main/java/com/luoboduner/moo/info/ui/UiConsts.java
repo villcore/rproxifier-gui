@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class UiConsts {
 
-    public static final String APP_NAME = "MooInfo";
+    public static final String APP_NAME = "Rproxifier";
     public static final String APP_VERSION = "1.1.1";
 
     public static final int TABLE_ROW_HEIGHT = 36;
