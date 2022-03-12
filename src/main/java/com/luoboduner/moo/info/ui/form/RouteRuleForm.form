@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.luoboduner.moo.info.ui.form.RouteRuleForm">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="50" bottom="10" right="50"/>
+    <constraints>
+      <xy x="20" y="20" width="653" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="9022f" binding="globalRulePanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="line" title="全局规则">
+          <color color="-4473925"/>
+        </border>
+        <children>
+          <grid id="df6d0" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="418bf" class="javax.swing.JButton" binding="queryGlobalRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="查询规则"/>
+                </properties>
+              </component>
+              <component id="fabbc" class="javax.swing.JButton" binding="addGlobalRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="增加规则"/>
+                </properties>
+              </component>
+              <component id="48deb" class="javax.swing.JButton" binding="removeGlobalRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="删除规则"/>
+                </properties>
+              </component>
+              <component id="7cd4a" class="javax.swing.JButton" binding="modifyGlobalRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="修改规则"/>
+                </properties>
+              </component>
+              <component id="c48a8" class="javax.swing.JButton" binding="moveUpGlobalRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="上移⬆"/>
+                </properties>
+              </component>
+              <component id="8b1da" class="javax.swing.JButton" binding="moveDownGlobalRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="下移⬇"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <scrollpane id="332b4">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="93aa6" class="javax.swing.JTable" binding="globalRouteRuleTable">
+                <constraints/>
+                <properties/>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="2e17b" binding="processRulePanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="line" title="进程规则（配置后覆盖全局规则，上移，下移仅支持相同进程路径间移动）">
+          <title-color color="-4473925"/>
+          <color color="-4473925"/>
+        </border>
+        <children>
+          <grid id="b0dcf" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="ec05a" class="javax.swing.JButton" binding="queryProcessRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="查询规则"/>
+                </properties>
+              </component>
+              <component id="6ff0b" class="javax.swing.JButton" binding="addProcessRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="增加规则"/>
+                </properties>
+              </component>
+              <component id="e0b2" class="javax.swing.JButton" binding="removeProcessRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="删除规则"/>
+                </properties>
+              </component>
+              <component id="6f4d" class="javax.swing.JButton" binding="modifyProcessRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="修改规则"/>
+                </properties>
+              </component>
+              <component id="f51d8" class="javax.swing.JButton" binding="moveUpProcessRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="上移⬆"/>
+                </properties>
+              </component>
+              <component id="b7f0" class="javax.swing.JButton" binding="moveDownProcessRuleButton">
+                <constraints/>
+                <properties>
+                  <text value="下移⬇"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <scrollpane id="1e30">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="7292b" class="javax.swing.JTable" binding="processRuleTable">
+                <constraints/>
+                <properties/>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
