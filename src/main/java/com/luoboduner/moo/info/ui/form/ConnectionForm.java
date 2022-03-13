@@ -13,11 +13,16 @@ import org.slf4j.LoggerFactory;
 import oshi.util.tuples.Pair;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class ConnectionForm {
@@ -44,10 +49,35 @@ public class ConnectionForm {
     private JPanel mainPanel;
     private JPanel tooltipPanel;
     private JTable connectionTable;
+    private JButton refreshButton;
+    private JCheckBox autoRefreshCheckbox;
+    private ScheduledFuture<?> autuRefreshFuture;
 
     public ConnectionForm() {
         this.refreshConnectionTable();
-        Scheduler.scheduleAtFixedRate(this::refreshConnectionTable, 5L, 5L, TimeUnit.SECONDS);
+        this.refreshButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                refreshConnectionTable();
+            }
+        });
+
+        this.autoRefreshCheckbox.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                if (autoRefreshCheckbox.isSelected()) {
+                    if (autuRefreshFuture != null) {
+                        autuRefreshFuture.cancel(true);
+                    }
+                    autuRefreshFuture = Scheduler.scheduleAtFixedRate(ConnectionForm.this::refreshConnectionTable, 5L, 5L, TimeUnit.SECONDS);
+                } else {
+                    if (autuRefreshFuture != null) {
+                        autuRefreshFuture.cancel(true);
+                        autuRefreshFuture = null;
+                    }
+                }
+            }
+        });
     }
 
     public JPanel getMainPanel() {
@@ -142,7 +172,7 @@ public class ConnectionForm {
             tableHeaderColumnModel.getColumn(0).setPreferredWidth(10);
             tableHeaderColumnModel.getColumn(1).setPreferredWidth(20);
             tableHeaderColumnModel.getColumn(2).setPreferredWidth(30);
-            tableHeaderColumnModel.getColumn(3).setPreferredWidth(30);
+            tableHeaderColumnModel.getColumn(3).setPreferredWidth(200);
             tableHeaderColumnModel.getColumn(4).setPreferredWidth(30);
             tableHeaderColumnModel.getColumn(5).setPreferredWidth(20);
             tableHeaderColumnModel.getColumn(6).setPreferredWidth(200);
@@ -160,10 +190,10 @@ public class ConnectionForm {
             tableColumnModel.getColumn(0).setPreferredWidth(1);
             tableColumnModel.getColumn(1).setPreferredWidth(20);
             tableColumnModel.getColumn(2).setPreferredWidth(30);
-            tableColumnModel.getColumn(3).setPreferredWidth(30);
+            tableColumnModel.getColumn(3).setPreferredWidth(300);
             tableColumnModel.getColumn(4).setPreferredWidth(30);
             tableColumnModel.getColumn(5).setPreferredWidth(20);
-            tableColumnModel.getColumn(6).setPreferredWidth(200);
+            tableColumnModel.getColumn(6).setPreferredWidth(150);
             tableColumnModel.getColumn(7).setPreferredWidth(20);
             tableColumnModel.getColumn(8).setPreferredWidth(20);
             tableColumnModel.getColumn(9).setPreferredWidth(20);

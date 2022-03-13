@@ -35,10 +35,10 @@ public class Scheduler {
                 });
     }
 
-    public static void scheduleAtFixedRate(Runnable command,
-                                           long initialDelay,
-                                           long period,
-                                           TimeUnit unit) {
-        INSTANCE.scheduledExecutorService.scheduleAtFixedRate(command, initialDelay, period, unit);
+    public static ScheduledFuture<?> scheduleAtFixedRate(Runnable command,
+                                                         long initialDelay,
+                                                         long period,
+                                                         TimeUnit unit) {
+        return INSTANCE.scheduledExecutorService.scheduleAtFixedRate(command, initialDelay, period, unit);
     }
 }
