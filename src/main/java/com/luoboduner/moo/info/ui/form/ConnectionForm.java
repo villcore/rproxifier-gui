@@ -34,7 +34,7 @@ public class ConnectionForm {
             "PID", "进程名称", "进程路径",
             "本地地址", "本地端口",
             "目的地址", "目的端口",
-            "发送速度⬆", "接收速度⬇",
+            // "发送速度⬆", "接收速度⬇",
             "发送流量⬆", "接收流量⬇",
             "最近活动",
             "打开时间",
@@ -133,10 +133,10 @@ public class ConnectionForm {
                         activeConnection.getDst_port(),
 
                         // 发送速度（KB）
-                        getShowTransTxSpeed(activeConnection),
+                        // getShowTransTxSpeed(activeConnection),
 
                         // 接收速度（KB）
-                        getShowTransRxSpeed(activeConnection),
+                        // getShowTransRxSpeed(activeConnection),
 
                         // 发送流量（KB）
                         getShowByte(activeConnection.getTx()),
@@ -178,12 +178,16 @@ public class ConnectionForm {
             tableHeaderColumnModel.getColumn(6).setPreferredWidth(200);
             tableHeaderColumnModel.getColumn(7).setPreferredWidth(20);
             tableHeaderColumnModel.getColumn(8).setPreferredWidth(20);
+//            tableHeaderColumnModel.getColumn(9).setPreferredWidth(20);
+//            tableHeaderColumnModel.getColumn(10).setPreferredWidth(20);
+//            tableHeaderColumnModel.getColumn(11).setPreferredWidth(20);
+//            tableHeaderColumnModel.getColumn(12).setPreferredWidth(20);
+//            tableHeaderColumnModel.getColumn(13).setPreferredWidth(20);
+//            tableHeaderColumnModel.getColumn(14).setPreferredWidth(150);
             tableHeaderColumnModel.getColumn(9).setPreferredWidth(20);
             tableHeaderColumnModel.getColumn(10).setPreferredWidth(20);
             tableHeaderColumnModel.getColumn(11).setPreferredWidth(20);
-            tableHeaderColumnModel.getColumn(12).setPreferredWidth(20);
-            tableHeaderColumnModel.getColumn(13).setPreferredWidth(20);
-            tableHeaderColumnModel.getColumn(14).setPreferredWidth(150);
+            tableHeaderColumnModel.getColumn(12).setPreferredWidth(150);
 
             // set column width
             TableColumnModel tableColumnModel = connectionTable.getColumnModel();
@@ -196,12 +200,16 @@ public class ConnectionForm {
             tableColumnModel.getColumn(6).setPreferredWidth(150);
             tableColumnModel.getColumn(7).setPreferredWidth(20);
             tableColumnModel.getColumn(8).setPreferredWidth(20);
+//            tableColumnModel.getColumn(9).setPreferredWidth(20);
+//            tableColumnModel.getColumn(10).setPreferredWidth(20);
+//            tableColumnModel.getColumn(11).setPreferredWidth(20);
+//            tableColumnModel.getColumn(12).setPreferredWidth(20);
+//            tableColumnModel.getColumn(13).setPreferredWidth(20);
+//            tableColumnModel.getColumn(14).setPreferredWidth(150);
             tableColumnModel.getColumn(9).setPreferredWidth(20);
             tableColumnModel.getColumn(10).setPreferredWidth(20);
             tableColumnModel.getColumn(11).setPreferredWidth(20);
-            tableColumnModel.getColumn(12).setPreferredWidth(20);
-            tableColumnModel.getColumn(13).setPreferredWidth(20);
-            tableColumnModel.getColumn(14).setPreferredWidth(150);
+            tableColumnModel.getColumn(12).setPreferredWidth(150);
             // connectionTable.updateUI();
         });
     }
