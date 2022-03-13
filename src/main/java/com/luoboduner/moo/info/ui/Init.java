@@ -1,16 +1,17 @@
 package com.luoboduner.moo.info.ui;
 
-import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
-import com.formdev.flatlaf.*;
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatDarkPurpleIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
 import com.luoboduner.moo.info.App;
 import com.luoboduner.moo.info.ui.component.TopMenuBar;
-import com.luoboduner.moo.info.ui.form.*;
 import com.luoboduner.moo.info.util.SystemUtil;
 import com.luoboduner.moo.info.util.UIUtil;
 import com.luoboduner.moo.info.util.UpgradeUtil;
@@ -140,18 +141,6 @@ public class Init {
      * init all tab
      */
     public static void initAllTab() {
-
-        ThreadUtil.execute(OverviewForm::init);
-        ThreadUtil.execute(DetailForm::init);
-        ThreadUtil.execute(MemoryForm::init);
-        ThreadUtil.execute(CpuForm::init);
-        ThreadUtil.execute(NetworkForm::init);
-        ThreadUtil.execute(UsbForm::init);
-        ThreadUtil.execute(VariablesForm::init);
-        ThreadUtil.execute(ProcessesForm::init);
-        ThreadUtil.execute(DiskForm::init);
-        ThreadUtil.execute(PowerSourceForm::init);
-
         // Check the new version
         if (App.config.isAutoCheckUpdate()) {
             ScheduledThreadPoolExecutor threadPoolExecutor = new ScheduledThreadPoolExecutor(1);

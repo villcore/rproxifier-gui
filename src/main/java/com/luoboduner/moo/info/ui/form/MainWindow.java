@@ -3,8 +3,12 @@ package com.luoboduner.moo.info.ui.form;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import lombok.Getter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 /**
@@ -15,6 +19,8 @@ import java.awt.*;
  */
 @Getter
 public class MainWindow {
+
+    private static final Logger LOG = LoggerFactory.getLogger(MainWindow.class);
 
     private JTabbedPane tabbedPane;
     private JPanel mainPanel;
@@ -59,6 +65,11 @@ public class MainWindow {
         mainWindow.getNetOverview().add(NetOverviewForm.getInstance().getMainPanel(), gridConstraints);
         mainWindow.getProcessPanel2().add(ProcessInfoForm.getInstance().getMainPanel(), gridConstraints);
 
+        tabbedPane.addChangeListener(e -> {
+            if (tabbedPane.getSelectedIndex() == 0) {
+                NetOverviewForm.getInstance().loadNetOverview();
+            }
+        });
         // add other panel
         mainWindow.getMainPanel().updateUI();
     }

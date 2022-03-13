@@ -33,8 +33,8 @@ public class NetworkInterface {
         }
 
         NetworkInterface networkInterface = new NetworkInterface();
-        networkInterface.interface_name = interfaceName;
-        networkInterface.ip_addr = interfaceIpAddr;
+        networkInterface.interface_name = interfaceName.trim();
+        networkInterface.ip_addr = interfaceIpAddr.trim();
         return Optional.of(networkInterface);
     }
 }
