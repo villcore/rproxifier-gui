@@ -3,6 +3,6 @@ package com.luoboduner.moo.info.util;
 public class Env {
 
     public static String getRproxiferServerAddr() {
-        return "http://localhost:18000";
+        return "http://127.0.0.1:18000";
     }
 }

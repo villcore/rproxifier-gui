@@ -47,7 +47,7 @@ public class DnsConfigForm {
     }
 
     public DnsConfigForm() {
-        reloadDnsConfigTable("");
+        // reloadDnsConfigTable("");
         addMouseListener();
         addKeyListener();
     }

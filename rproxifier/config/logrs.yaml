@@ -1,0 +1,21 @@
+refresh_rate: 30 seconds
+appenders:
+  stdout:
+    kind: "log/rproxifier_out.log"
+  requests:
+    kind: file
+    path: "log/rproxifier.log"
+    encoder:
+      pattern: "{d} - {m}{n}"
+root:
+  level: error
+  appenders:
+    - requests
+loggers:
+  app::backend::db:
+    level: error
+  app::requests:
+    level: error
+    appenders:
+      - requests
+    additive: false
