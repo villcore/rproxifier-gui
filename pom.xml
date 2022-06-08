@@ -143,75 +143,76 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>io.github.fvarrui</groupId>
-                <artifactId>javapackager</artifactId>
-                <version>1.6.3</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
                 <configuration>
-                    <bundleJre>true</bundleJre>
-                    <mainClass>com.luoboduner.moo.info.App</mainClass>
-                    <generateInstaller>true</generateInstaller>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>bundling-for-windows</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>package</goal>
+                            <goal>shade</goal>
                         </goals>
+                        <!--<configuration>-->
+                        <!--<relocations>-->
+                        <!--<relocation>-->
+                        <!--<pattern>com.google.guava</pattern>-->
+                        <!--<shadedPattern>my.elasticsearch.guava</shadedPattern>-->
+                        <!--</relocation>-->
+                        <!--</relocations>-->
+                        <!--<transformers>-->
+                        <!--<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer" />-->
+                        <!--</transformers>-->
+                        <!--</configuration>-->
                         <configuration>
-                            <platform>windows</platform>
-                            <createZipball>true</createZipball>
-<!--                            <administratorRequired>true</administratorRequired>-->
-                            <winConfig>
-
-                                <!-- general properties -->
-                                <generateSetup>false</generateSetup>
-                                <generateMsi>false</generateMsi>
-                                <generateMsm>false</generateMsm>
-
-                                <!-- setup generation properties -->
-<!--                                <setupMode>installForAllUsers</setupMode>-->
-                                <createDesktopIconTask>true</createDesktopIconTask>
-                                <disableDirPage>false</disableDirPage>
-                                <disableFinishedPage>false</disableFinishedPage>
-<!--                                <setupLanguages>-->
-<!--                                    <english>compiler:Default.isl</english>-->
-<!--                                    &lt;!&ndash;                                    <spanish>compiler:Languages\Chinese.isl</spanish>&ndash;&gt;-->
-<!--                                </setupLanguages>-->
-                            </winConfig>
-                            <customizedJre>true</customizedJre>
-                            <jdkPath>D:\Program Files\Java\jdk1.8.0_291</jdkPath>
-                            <jrePath>D:\Program Files\Java\jdk1.8.0_291\jre</jrePath>
-                            <bundleJre>true</bundleJre>
-                            <packagingJdk>D:\Program Files\Java\jdk1.8.0_291</packagingJdk>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <!-- Additional configuration. -->
                         </configuration>
                     </execution>
-                    <!--                                        <execution>-->
-                    <!--                                            <id>bundling-for-linux</id>-->
-                    <!--                                            <phase>package</phase>-->
-                    <!--                                            <goals>-->
-                    <!--                                                <goal>package</goal>-->
-                    <!--                                            </goals>-->
-                    <!--                                            <configuration>-->
-                    <!--                                                <platform>linux</platform>-->
-                    <!--                                                <createTarball>true</createTarball>-->
-                    <!--&lt;!&ndash;                                                <jdkPath>X:\\path\to\linux\jdk</jdkPath>&ndash;&gt;-->
-                    <!--                                            </configuration>-->
-                    <!--                                        </execution>-->
-                    <!--                                                            <execution>-->
-                    <!--                                                                <id>bundling-for-mac</id>-->
-                    <!--                                                                <phase>package</phase>-->
-                    <!--                                                                <goals>-->
-                    <!--                                                                    <goal>package</goal>-->
-                    <!--                                                                </goals>-->
-                    <!--                                                                <configuration>-->
-                    <!--                                                                    <platform>mac</platform>-->
-                    <!--                                                                    <createTarball>true</createTarball>-->
-                    <!--                    &lt;!&ndash;                                                <jdkPath>X:\\path\to\mac\jdk</jdkPath>&ndash;&gt;-->
-                    <!--                                                                </configuration>-->
-                    <!--                                                            </execution>-->
                 </executions>
             </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--</plugin>-->
         </plugins>
+        <resources>
+            <resource>
+                <!-- ⭐️JSP包打包到资源里 -->
+                <directory>src/main/webapp</directory>
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+            <resource>
+                <!-- ⭐️其他资打包到资源里 -->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
     </build>
 </project>

@@ -5,7 +5,6 @@ import com.formdev.flatlaf.extras.FlatInspector;
 import com.formdev.flatlaf.extras.FlatUIDefaultsInspector;
 import com.formdev.flatlaf.util.SystemInfo;
 import com.luoboduner.moo.info.ui.Init;
-import com.luoboduner.moo.info.ui.dialog.AboutDialog;
 import com.luoboduner.moo.info.ui.dialog.SettingDialog;
 import com.luoboduner.moo.info.ui.form.MainWindow;
 import com.luoboduner.moo.info.ui.frame.MainFrame;
@@ -14,13 +13,15 @@ import com.luoboduner.moo.info.util.UIUtil;
 import com.luoboduner.moo.info.util.UpgradeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
 
-
 @Slf4j
 public class App {
+    private static final Logger LOG = LoggerFactory.getLogger(App.class);
 
     public static ConfigUtil config = ConfigUtil.getInstance();
 
@@ -37,17 +38,7 @@ public class App {
                 System.setProperty("apple.awt.application.appearance", "system");
             }
 
-            FlatDesktop.setAboutHandler(() -> {
-                try {
-                    AboutDialog dialog = new AboutDialog();
-
-                    dialog.pack();
-                    dialog.setVisible(true);
-                } catch (Exception e2) {
-                    log.error(ExceptionUtils.getStackTrace(e2));
-                }
-            });
-            FlatDesktop.setPreferencesHandler(() -> {
+                        FlatDesktop.setPreferencesHandler(() -> {
                 try {
                     SettingDialog dialog = new SettingDialog();
 

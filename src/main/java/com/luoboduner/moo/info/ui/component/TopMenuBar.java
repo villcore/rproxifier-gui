@@ -5,7 +5,6 @@ import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.extras.FlatAnimatedLafChange;
 import com.luoboduner.moo.info.App;
 import com.luoboduner.moo.info.ui.Init;
-import com.luoboduner.moo.info.ui.dialog.AboutDialog;
 import com.luoboduner.moo.info.ui.dialog.SettingDialog;
 import com.luoboduner.moo.info.ui.dialog.SystemEnvResultDialog;
 import com.luoboduner.moo.info.ui.dialog.SystemInfoTestDialog;
@@ -176,24 +175,6 @@ public class TopMenuBar extends JMenuBar {
         appearanceMenu.add(fontSizeMenu);
 
         topMenuBar.add(appearanceMenu);
-
-        // ---------About
-        JMenu aboutMenu = new JMenu();
-        aboutMenu.setText("About");
-
-        // Check for Updates
-        JMenuItem checkForUpdatesItem = new JMenuItem();
-        checkForUpdatesItem.setText("Check for Updates");
-        checkForUpdatesItem.addActionListener(e -> checkForUpdatesActionPerformed());
-        aboutMenu.add(checkForUpdatesItem);
-
-        // About
-        JMenuItem aboutMenuItem = new JMenuItem();
-        aboutMenuItem.setText("About");
-        aboutMenuItem.addActionListener(e -> aboutActionPerformed());
-        aboutMenu.add(aboutMenuItem);
-
-        topMenuBar.add(aboutMenu);
     }
 
     private void checkForUpdatesActionPerformed() {
@@ -328,17 +309,6 @@ public class TopMenuBar extends JMenuBar {
             JOptionPane.showMessageDialog(MainWindow.getInstance().getMainPanel(), "Save failed!\n\n" + e1.getMessage(), "Failed",
                     JOptionPane.ERROR_MESSAGE);
             log.error(ExceptionUtils.getStackTrace(e1));
-        }
-    }
-
-    private void aboutActionPerformed() {
-        try {
-            AboutDialog dialog = new AboutDialog();
-
-            dialog.pack();
-            dialog.setVisible(true);
-        } catch (Exception e2) {
-            log.error(ExceptionUtils.getStackTrace(e2));
         }
     }
 
